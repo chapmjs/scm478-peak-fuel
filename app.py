@@ -9,7 +9,7 @@ st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Dashboard", "Ingredients", "Sales", "Purchasing"])
 
 if page == "Dashboard":
-    st.write("Welcome to Peak Fuel Foods! This system will help Maria manage her supply chain.")
+    st.write("Welcome to Peak Fuel Foods! Built by chapmjs.")
     st.write("Use the sidebar to navigate between modules.")
 elif page == "Ingredients":
     st.write("Ingredient catalog will go here.")
