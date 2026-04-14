@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import self_check
 
 # ---------------------------------------------------------
 # Page configuration
