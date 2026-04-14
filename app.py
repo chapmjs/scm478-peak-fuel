@@ -25,10 +25,14 @@ products_df, ingredients_df = load_data()
 # Sidebar navigation
 # ---------------------------------------------------------
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Dashboard", "Ingredients", "Sales", "Purchasing"])
+page = st.sidebar.radio("Go to", ["Dashboard", "Ingredients", "Sales", "Purchasing", "Self-Check"])
 
 st.sidebar.divider()
 st.sidebar.caption("SCM 478 • BYU-Idaho")
+
+# Self-Check Page:
+if page == "Self-Check":
+    self_check.run_self_check()
 
 # ---------------------------------------------------------
 # Dashboard Page
@@ -88,3 +92,6 @@ elif page == "Sales":
 elif page == "Purchasing":
     st.title("Purchasing")
     st.write("Purchase orders and supplier info will go here.")
+
+
+
