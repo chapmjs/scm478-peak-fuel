@@ -1,5 +1,5 @@
 """
-SCM 478 — Unit 1 Checks: Peak Fuel Dashboard (Weeks 1-4)
+SCM 478  -  Unit 1 Checks: Peak Fuel Dashboard (Weeks 1-4)
 
 This file is released at the start of Unit 1 and grows as new
 assignments are added. Each function returns a list of
@@ -41,7 +41,7 @@ def _read_app_code():
 
 
 # ==================================================================
-# SECTION: Week 1 In-Class Exercise — Ingredient Catalog Viewer
+# SECTION: Week 1 In-Class Exercise  -  Ingredient Catalog Viewer
 # ==================================================================
 def _check_week1_inclass():
     checks = []
@@ -67,7 +67,7 @@ def _check_week1_inclass():
                 checks.append((
                     "Products & Pricing file loads",
                     False,
-                    f"Found file but only {len(products_df)} rows — expected 5.",
+                    f"Found file but only {len(products_df)} rows  -  expected 5.",
                     5,
                 ))
         except Exception as e:
@@ -107,7 +107,7 @@ def _check_week1_inclass():
         checks.append((
             "Products file has required columns",
             False,
-            "Cannot check — file not loaded.",
+            "Cannot check  -  file not loaded.",
             5,
         ))
 
@@ -132,7 +132,7 @@ def _check_week1_inclass():
                 checks.append((
                     "Ingredient Catalog file loads",
                     False,
-                    f"Only {len(ingredient_df)} rows — expected at least 30.",
+                    f"Only {len(ingredient_df)} rows  -  expected at least 30.",
                     5,
                 ))
         except Exception as e:
@@ -176,7 +176,7 @@ def _check_week1_inclass():
         checks.append((
             "Ingredient Catalog has required columns",
             False,
-            "Cannot check — file not loaded.",
+            "Cannot check  -  file not loaded.",
             5,
         ))
 
@@ -188,7 +188,7 @@ def _check_week1_inclass():
             checks.append((
                 "Cost data is numeric and valid",
                 True,
-                f"Range: ${valid.min():.2f} – ${valid.max():.2f}.",
+                f"Range: ${valid.min():.2f} - ${valid.max():.2f}.",
                 5,
             ))
         else:
@@ -202,7 +202,7 @@ def _check_week1_inclass():
         checks.append((
             "Cost data is numeric and valid",
             False,
-            "Cannot check — missing Cost Per Unit column.",
+            "Cannot check  -  missing Cost Per Unit column.",
             5,
         ))
 
@@ -220,7 +220,7 @@ def _check_week1_inclass():
             checks.append((
                 "Supplier data available for filtering",
                 False,
-                f"Only {n} suppliers — expected at least 5.",
+                f"Only {n} suppliers  -  expected at least 5.",
                 5,
             ))
     else:
@@ -300,7 +300,7 @@ def _check_week1_inclass():
 
 
 # ==================================================================
-# SECTION: Week 1 Homework — Supplier Lookup
+# SECTION: Week 1 Homework  -  Supplier Lookup
 # ==================================================================
 def _check_week1_homework(ingredient_df, products_df):
     checks = []
@@ -326,7 +326,7 @@ def _check_week1_homework(ingredient_df, products_df):
                 checks.append((
                     "Vendor Contacts file loads",
                     False,
-                    f"Only {len(vendor_df)} rows — expected at least 20.",
+                    f"Only {len(vendor_df)} rows  -  expected at least 20.",
                     5,
                 ))
         except Exception as e:
@@ -369,7 +369,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Vendor file has required columns",
             False,
-            "Cannot check — file not loaded.",
+            "Cannot check  -  file not loaded.",
             5,
         ))
 
@@ -415,7 +415,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Supplier ID shared key links correctly",
             False,
-            "Cannot check — one or both files not loaded.",
+            "Cannot check  -  one or both files not loaded.",
             10,
         ))
 
@@ -427,7 +427,7 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "Lead time data is valid",
                 True,
-                f"Range: {int(valid.min())}–{int(valid.max())} weeks.",
+                f"Range: {int(valid.min())}-{int(valid.max())} weeks.",
                 5,
             ))
         else:
@@ -441,7 +441,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Lead time data is valid",
             False,
-            "Cannot check — missing column.",
+            "Cannot check  -  missing column.",
             5,
         ))
 
@@ -520,7 +520,7 @@ def _check_week1_homework(ingredient_df, products_df):
                 checks.append((
                     "Reorder cost calculation is feasible",
                     False,
-                    "Calculates to $0 — check that Cost and MOQ are numeric.",
+                    "Calculates to $0  -  check that Cost and MOQ are numeric.",
                     5,
                 ))
         else:
@@ -534,7 +534,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Reorder cost calculation is feasible",
             False,
-            "Cannot calculate — Ingredient Catalog not loaded.",
+            "Cannot calculate  -  Ingredient Catalog not loaded.",
             5,
         ))
 
@@ -568,7 +568,7 @@ def _check_week1_homework(ingredient_df, products_df):
 
 
 # ==================================================================
-# PUBLIC INTERFACE — called by self_check.py
+# PUBLIC INTERFACE  -  called by self_check.py
 # ==================================================================
 def run_checks():
     """
