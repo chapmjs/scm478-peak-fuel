@@ -1,15 +1,11 @@
 """
-SCM 478  -  Unit 1 Checks: Peak Fuel Dashboard (Weeks 1-4)
-
-This file is released at the start of Unit 1 and grows as new
-assignments are added. Each function returns a list of
-(name, passed, detail, points) tuples.
+SCM 478 - Unit 1 Checks: Peak Fuel Dashboard (Weeks 1-4)
 
 Current sections:
   - Week 1 In-Class: Ingredient Catalog Viewer
   - Week 1 Homework: Supplier Lookup
 
-Future sections (will be added):
+Future sections (will be added as released):
   - Week 2 In-Class: Sales & Demand Viewer
   - Week 2 Homework: Inventory Alerts
   - Week 3 In-Class: Monday Morning Dashboard
@@ -20,9 +16,6 @@ import pandas as pd
 import os
 
 
-# ==================================================================
-# HELPER: Find a file by checking common name variations
-# ==================================================================
 def _find_file(candidates):
     """Return the first matching filename, or None."""
     for fname in candidates:
@@ -41,7 +34,7 @@ def _read_app_code():
 
 
 # ==================================================================
-# SECTION: Week 1 In-Class Exercise  -  Ingredient Catalog Viewer
+# SECTION: Week 1 In-Class Exercise
 # ==================================================================
 def _check_week1_inclass():
     checks = []
@@ -60,21 +53,21 @@ def _check_week1_inclass():
                 checks.append((
                     "Products & Pricing file loads",
                     True,
-                    f"Found {products_file} with {len(products_df)} products.",
+                    "Found %s with %d products." % (products_file, len(products_df)),
                     5,
                 ))
             else:
                 checks.append((
                     "Products & Pricing file loads",
                     False,
-                    f"Found file but only {len(products_df)} rows  -  expected 5.",
+                    "Found file but only %d rows - expected 5." % len(products_df),
                     5,
                 ))
         except Exception as e:
             checks.append((
                 "Products & Pricing file loads",
                 False,
-                f"File found but error loading: {str(e)[:80]}",
+                "File found but error loading: %s" % str(e)[:80],
                 5,
             ))
     else:
@@ -93,21 +86,21 @@ def _check_week1_inclass():
             checks.append((
                 "Products file has required columns",
                 True,
-                f"Columns present: {', '.join(req_prod)}.",
+                "Columns present: %s." % ", ".join(req_prod),
                 5,
             ))
         else:
             checks.append((
                 "Products file has required columns",
                 False,
-                f"Missing: {', '.join(missing)}.",
+                "Missing: %s." % ", ".join(missing),
                 5,
             ))
     else:
         checks.append((
             "Products file has required columns",
             False,
-            "Cannot check  -  file not loaded.",
+            "Cannot check - file not loaded.",
             5,
         ))
 
@@ -125,21 +118,21 @@ def _check_week1_inclass():
                 checks.append((
                     "Ingredient Catalog file loads",
                     True,
-                    f"Found {ingredient_file} with {len(ingredient_df)} ingredients.",
+                    "Found %s with %d ingredients." % (ingredient_file, len(ingredient_df)),
                     5,
                 ))
             else:
                 checks.append((
                     "Ingredient Catalog file loads",
                     False,
-                    f"Only {len(ingredient_df)} rows  -  expected at least 30.",
+                    "Only %d rows - expected at least 30." % len(ingredient_df),
                     5,
                 ))
         except Exception as e:
             checks.append((
                 "Ingredient Catalog file loads",
                 False,
-                f"Error loading: {str(e)[:80]}",
+                "Error loading: %s" % str(e)[:80],
                 5,
             ))
     else:
@@ -162,21 +155,21 @@ def _check_week1_inclass():
             checks.append((
                 "Ingredient Catalog has required columns",
                 True,
-                f"All {len(req_ing)} columns present.",
+                "All %d columns present." % len(req_ing),
                 5,
             ))
         else:
             checks.append((
                 "Ingredient Catalog has required columns",
                 False,
-                f"Missing: {', '.join(missing)}.",
+                "Missing: %s." % ", ".join(missing),
                 5,
             ))
     else:
         checks.append((
             "Ingredient Catalog has required columns",
             False,
-            "Cannot check  -  file not loaded.",
+            "Cannot check - file not loaded.",
             5,
         ))
 
@@ -188,21 +181,21 @@ def _check_week1_inclass():
             checks.append((
                 "Cost data is numeric and valid",
                 True,
-                f"Range: ${valid.min():.2f} - ${valid.max():.2f}.",
+                "Range: $%.2f - $%.2f." % (valid.min(), valid.max()),
                 5,
             ))
         else:
             checks.append((
                 "Cost data is numeric and valid",
                 False,
-                f"{len(ingredient_df) - len(valid)} rows have missing or non-numeric costs.",
+                "%d rows have missing or non-numeric costs." % (len(ingredient_df) - len(valid)),
                 5,
             ))
     else:
         checks.append((
             "Cost data is numeric and valid",
             False,
-            "Cannot check  -  missing Cost Per Unit column.",
+            "Cannot check - missing Cost Per Unit column.",
             5,
         ))
 
@@ -213,21 +206,21 @@ def _check_week1_inclass():
             checks.append((
                 "Supplier data available for filtering",
                 True,
-                f"{n} unique suppliers in catalog.",
+                "%d unique suppliers in catalog." % n,
                 5,
             ))
         else:
             checks.append((
                 "Supplier data available for filtering",
                 False,
-                f"Only {n} suppliers  -  expected at least 5.",
+                "Only %d suppliers - expected at least 5." % n,
                 5,
             ))
     else:
         checks.append((
             "Supplier data available for filtering",
             False,
-            "No 'Primary Supplier Name' column found.",
+            "No Primary Supplier Name column found.",
             5,
         ))
 
@@ -300,7 +293,7 @@ def _check_week1_inclass():
 
 
 # ==================================================================
-# SECTION: Week 1 Homework  -  Supplier Lookup
+# SECTION: Week 1 Homework - Supplier Lookup
 # ==================================================================
 def _check_week1_homework(ingredient_df, products_df):
     checks = []
@@ -319,21 +312,21 @@ def _check_week1_homework(ingredient_df, products_df):
                 checks.append((
                     "Vendor Contacts file loads",
                     True,
-                    f"Found {vendor_file} with {len(vendor_df)} suppliers.",
+                    "Found %s with %d suppliers." % (vendor_file, len(vendor_df)),
                     5,
                 ))
             else:
                 checks.append((
                     "Vendor Contacts file loads",
                     False,
-                    f"Only {len(vendor_df)} rows  -  expected at least 20.",
+                    "Only %d rows - expected at least 20." % len(vendor_df),
                     5,
                 ))
         except Exception as e:
             checks.append((
                 "Vendor Contacts file loads",
                 False,
-                f"Error loading: {str(e)[:80]}",
+                "Error loading: %s" % str(e)[:80],
                 5,
             ))
     else:
@@ -362,14 +355,14 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "Vendor file has required columns",
                 False,
-                f"Missing: {', '.join(missing)}.",
+                "Missing: %s." % ", ".join(missing),
                 5,
             ))
     else:
         checks.append((
             "Vendor file has required columns",
             False,
-            "Cannot check  -  file not loaded.",
+            "Cannot check - file not loaded.",
             5,
         ))
 
@@ -386,15 +379,15 @@ def _check_week1_homework(ingredient_df, products_df):
                 checks.append((
                     "Supplier ID shared key links correctly",
                     True,
-                    f"All {len(ing_ids)} catalog suppliers found in vendor file.",
+                    "All %d catalog suppliers found in vendor file." % len(ing_ids),
                     10,
                 ))
             elif matched:
+                extras = ", ".join(list(unmatched)[:3])
                 checks.append((
                     "Supplier ID shared key links correctly",
                     True,
-                    f"{len(matched)} matched, {len(unmatched)} unmatched: "
-                    f"{', '.join(list(unmatched)[:3])}.",
+                    "%d matched, %d unmatched: %s." % (len(matched), len(unmatched), extras),
                     10,
                 ))
             else:
@@ -408,14 +401,14 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "Supplier ID shared key links correctly",
                 False,
-                f"Missing '{ing_col}' in catalog or '{ven_col}' in vendor file.",
+                "Missing '%s' in catalog or '%s' in vendor file." % (ing_col, ven_col),
                 10,
             ))
     else:
         checks.append((
             "Supplier ID shared key links correctly",
             False,
-            "Cannot check  -  one or both files not loaded.",
+            "Cannot check - one or both files not loaded.",
             10,
         ))
 
@@ -427,7 +420,7 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "Lead time data is valid",
                 True,
-                f"Range: {int(valid.min())}-{int(valid.max())} weeks.",
+                "Range: %d-%d weeks." % (int(valid.min()), int(valid.max())),
                 5,
             ))
         else:
@@ -441,7 +434,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Lead time data is valid",
             False,
-            "Cannot check  -  missing column.",
+            "Cannot check - missing column.",
             5,
         ))
 
@@ -463,8 +456,7 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "App references supplier data",
                 False,
-                "No vendor/supplier references in app.py. "
-                "Load and display vendor contact info.",
+                "No vendor/supplier references in app.py. Load and display vendor contact info.",
                 5,
             ))
     else:
@@ -488,8 +480,7 @@ def _check_week1_homework(ingredient_df, products_df):
             checks.append((
                 "App displays summary metric(s)",
                 False,
-                "No st.metric() found. Add total minimum reorder cost "
-                "(sum of Cost x MOQ).",
+                "No st.metric() found. Add total minimum reorder cost (sum of Cost x MOQ).",
                 5,
             ))
     else:
@@ -512,15 +503,14 @@ def _check_week1_homework(ingredient_df, products_df):
                 checks.append((
                     "Reorder cost calculation is feasible",
                     True,
-                    f"Expected total minimum reorder cost: ${total:,.2f} "
-                    f"(sum of Cost x MOQ). Verify your app shows this value.",
+                    "Expected total minimum reorder cost: $%s. Verify your app shows this." % format(total, ",.2f"),
                     5,
                 ))
             else:
                 checks.append((
                     "Reorder cost calculation is feasible",
                     False,
-                    "Calculates to $0  -  check that Cost and MOQ are numeric.",
+                    "Calculates to $0 - check that Cost and MOQ are numeric.",
                     5,
                 ))
         else:
@@ -534,7 +524,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "Reorder cost calculation is feasible",
             False,
-            "Cannot calculate  -  Ingredient Catalog not loaded.",
+            "Cannot calculate - Ingredient Catalog not loaded.",
             5,
         ))
 
@@ -544,9 +534,8 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "All three data files loaded",
             True,
-            f"Products ({len(products_df)}), "
-            f"Ingredients ({len(ingredient_df)}), "
-            f"Vendors ({len(vendor_df)}).",
+            "Products (%d), Ingredients (%d), Vendors (%d)." % (
+                len(products_df), len(ingredient_df), len(vendor_df)),
             5,
         ))
     else:
@@ -560,7 +549,7 @@ def _check_week1_homework(ingredient_df, products_df):
         checks.append((
             "All three data files loaded",
             False,
-            f"Missing: {', '.join(missing)}.",
+            "Missing: %s." % ", ".join(missing),
             5,
         ))
 
@@ -568,7 +557,7 @@ def _check_week1_homework(ingredient_df, products_df):
 
 
 # ==================================================================
-# PUBLIC INTERFACE  -  called by self_check.py
+# PUBLIC INTERFACE
 # ==================================================================
 def run_checks():
     """
