@@ -1,23 +1,34 @@
 """
-SCM 478 — Self-Check Module
+SCM 478 - Self-Check Module
 Peak Fuel Foods Supply Chain System
-
-Add this file and the checks/ folder to your GitHub repo.
-Then add "Self-Check" to your app's sidebar navigation.
-
-This module checks whether your app meets the requirements
-for each unit's assignments. New check files are released
-each unit — add them to the checks/ folder as they're assigned.
-
-Your score on Self-Check is what you'll be graded on.
-Fix issues until you reach 100%, then submit your URL.
-
 
 Add this file and the checks/ folder to your GitHub repo.
 Then add Self-Check to your app sidebar navigation.
 """
 
 import streamlit as st
+
+
+def _show_result(name, passed, detail, points):
+    """Display a single check result with color coding."""
+    if passed:
+        st.markdown(
+            f'<div style="background-color: #d4edda; border-left: 4px solid #28a745; '
+            f'padding: 8px 12px; margin-bottom: 8px; border-radius: 4px;">'
+            f'<strong style="color: #155724;">PASS</strong> - '
+            f'<strong>{name}</strong> ({points} pts)<br/>'
+            f'<span style="color: #155724;">{detail}</span></div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            f'<div style="background-color: #f8d7da; border-left: 4px solid #dc3545; '
+            f'padding: 8px 12px; margin-bottom: 8px; border-radius: 4px;">'
+            f'<strong style="color: #721c24;">FAIL</strong> - '
+            f'<strong>{name}</strong> ({points} pts)<br/>'
+            f'<span style="color: #721c24;">{detail}</span></div>',
+            unsafe_allow_html=True,
+        )
 
 
 def run_self_check():
@@ -84,13 +95,7 @@ def run_self_check():
                 section_possible += points
                 if passed:
                     section_earned += points
-                    st.markdown(
-                        f"**PASS** - **{name}** ({points} pts)  \n{detail}"
-                    )
-                else:
-                    st.markdown(
-                        f"**FAIL** - **{name}** ({points} pts)  \n{detail}"
-                    )
+                _show_result(name, passed, detail, points)
 
             pct = (
                 int(section_earned / section_possible * 100)
@@ -100,16 +105,16 @@ def run_self_check():
 
             if pct == 100:
                 st.success(
-                    f"{section_name}: {pct}% - All checks passed!"
+                    f"**{section_name}: {pct}%** -- All checks passed!"
                 )
             elif pct >= 75:
                 st.warning(
-                    f"{section_name}: {pct}% - "
+                    f"**{section_name}: {pct}%** -- "
                     f"{section_possible - section_earned} point(s) remaining."
                 )
             else:
                 st.error(
-                    f"{section_name}: {pct}% - "
+                    f"**{section_name}: {pct}%** -- "
                     f"{section_possible - section_earned} point(s) remaining."
                 )
 
@@ -136,5 +141,5 @@ def run_self_check():
     st.caption(
         "This checker validates data files and app structure. "
         "It cannot verify that filters, charts, and metrics display "
-        "correctly - verify those yourself by clicking through your app."
+        "correctly -- verify those yourself by clicking through your app."
     )
