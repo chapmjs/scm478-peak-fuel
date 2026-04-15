@@ -18,7 +18,7 @@ st.set_page_config(
 def load_data():
     products = pd.read_csv("Products_Pricing.csv")
     ingredients = pd.read_csv("Ingredient_Catalog.csv")
-    sales = pd.read_csv("data/Sales_Log.csv", parse_dates=["Date"])
+    sales = pd.read_csv("Sales_Log.csv", parse_dates=["Date"])
     return products, ingredients
 
 products_df, ingredients_df, sales_df = load_data()
