@@ -115,7 +115,7 @@ def build_quick_scan(pivot_df):
 # Sidebar navigation
 # ---------------------------------------------------------
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Dashboard", "Ingredients", "Sales and Demand", "Purchasing", "Self-Check"])
+page = st.sidebar.radio("Go to", ["Dashboard", "Ingredients", "Sales", "Purchasing", "Self-Check"])
 
 st.sidebar.divider()
 st.sidebar.caption("SCM 478 • BYU-Idaho")
@@ -172,8 +172,8 @@ elif page == "Ingredients":
 # ---------------------------------------------------------
 # Sales and Demand Page
 # ---------------------------------------------------------
-elif page == "Sales and Demand":
-    st.title("Sales and Demand")
+elif page == "Sales":
+    st.title("Sales")
 
     weekly_sales_df = build_weekly_product_sales(sales_df)
     units_pivot_df = build_units_pivot(weekly_sales_df)
